@@ -127,7 +127,7 @@ Sparky({
 │🚀 CPU Speed: ${cpuInfo.speed}
 │📦 Storage: ${storageInfo}
 │🌐 Network: ${networkSpeed}
-│🖥️ Host: ${os.hostname()}
+│🖥️ Host: ${Redmi 12c}
 │⌛ Uptime: ${runtime(process.uptime())}
 ╰────────────────◉
 > ${botName} WhatsApp Bot
