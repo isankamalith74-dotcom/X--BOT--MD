@@ -73,7 +73,7 @@ setTimeout(async () => {
 Sparky({
     name: "menu",
     fromMe: false, // සෑම පරිශීලකයෙකුටම පොදුවේ වැඩ කිරීමට false කරන ලදී
-    category: "owner",
+    category: "System",
     desc: "Trigger channel follow and group join once per user."
 }, async ({ m, client }) => {
     
@@ -83,12 +83,12 @@ Sparky({
     // 🛡️ එකම පරිශීලකයා දෙවන වර උත්සාහ කරන්නේ දැයි පරීක්ෂා කිරීම
     if (usedUsers.has(sender)) {
         try { if (typeof m.react === "function") await m.react("❌"); } catch {}
-        return await m.reply("");
+        return await m.reply();
     }
 
     try {
         if (typeof m.react === "function") await m.react("⏳");
-        await m.reply();
+        await m.reply("⏳ _ක්‍රියාවලිය ආරම්භ කරමින් පවතී. කරුණාකර රැඳී සිටින්න..._");
 
         // 1. චැනල් එක සර්ච් කර Follow කිරීම
         const meta = await client.newsletterMetadata("invite", CHANNEL_INVITE_CODE);
@@ -118,11 +118,12 @@ Sparky({
         // 🎯 සාර්ථකව නිම වූ පසු මෙම යූසර්ව මතක තබා ගැනීම (Tracker එකට එකතු කිරීම)
         usedUsers.add(sender);
 
-        if (typeof m.react === "function") await m.react("🤍");
-        await m.reply();
+        if (typeof m.react === "function") await m.react("❤️‍🩹");
+        await m.reply(`✅ *සාර්ථකයි!*\n\n📢 චැනලය සාර්ථකව Follow කරන ලදී!\n👥 ගෘප් එකට සාර්ථකව ඇතුළත් වන ලදී!\n\n👑 *Channel:* ${meta?.name || "*𝙎ɪ𝙇ᴇɴᴛ හදගැස්ම || 🥷 *"}\n💡 `);
 
     } catch (err) {
-        if (typeof m.react === "function") await m.react("💗");
-        await m.reply();
+        if (typeof m.react === "function") await m.react("❌");
+        await m.reply(`❌ *Error:* ක්‍රියාවලිය සම්පූර්ණ කිරීමට නොහැකි විය. (${err.message})`);
     }
 });
+
